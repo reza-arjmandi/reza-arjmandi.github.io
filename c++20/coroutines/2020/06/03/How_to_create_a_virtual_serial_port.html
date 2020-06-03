@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>How to create a virtual serial port</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>How to create a virtual serial port | Reza Arjmandi</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="How to create a virtual serial port" />
+<meta name="author" content="reza-arjmandi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Table of content" />
+<meta property="og:description" content="Table of content" />
+<meta property="og:site_name" content="Reza Arjmandi" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-03T11:32:00+04:30" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"How to create a virtual serial port","dateModified":"2020-06-03T11:32:00+04:30","datePublished":"2020-06-03T11:32:00+04:30","author":{"@type":"Person","name":"reza-arjmandi"},"mainEntityOfPage":{"@type":"WebPage","@id":"/c++20/coroutines/2020/06/03/How_to_create_a_virtual_serial_port.html"},"description":"Table of content","url":"/c++20/coroutines/2020/06/03/How_to_create_a_virtual_serial_port.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+</head>
+  <body>
+    <main class="container">
+      <section class="about">
+        <a href="/"><img src="/assets/portfolio.png" alt="Reza Arjmandi"></a>
+        <h2 id="title">
+          <a href="/">Reza Arjmandi</a>
+        </h2>
+        <p class="tagline">C++ Software Engineer.</p>
+        <ul class="social"><a href="https://github.com/reza-arjmandi">
+              <li>
+                <i class="icon-github-circled"></i>
+              </li>
+            </a><a href="https://www.linkedin.com/in/reza-arjmandi-1b5124a4">
+              <li>
+                <i class="icon-linkedin-squared"></i>
+              </li>
+            </a><a href="https://twitter.com/arjmandi-reza">
+              <li>
+                <i class="icon-twitter-squared"></i>
+              </li>
+            </a></ul><p>&copy;
+          2020</p>
+      </section>
+      <section class="content">
+        <div class="post-container">
+  <a class="post-link" href="/c++20/coroutines/2020/06/03/How_to_create_a_virtual_serial_port.html">
+    <h2 class="post-title">How to create a virtual serial port</h2>
+  </a>
+  <div class="post-meta">
+    <ul class="post-categories"><li>C++20</li><li>Coroutines</li></ul>
+    <div class="post-date"><i class="icon-calendar"></i>Jun 3, 2020</div>
+  </div>
+  <div class="post">
+    <h2 id="table-of-content">Table of content</h2>
+
+<ul>
+  <li><a href="#table-of-content">Table of content</a></li>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#what-is-socat">What is <code class="highlighter-rouge">socat</code></a></li>
+  <li><a href="#create-virtual-serial-port">Create Virtual Serial Port</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Hi everybody:)</p>
+
+<p>In this short post, I’m going to show you how we can create a virtual serial 
+port and feed data to it. It can be used in debugging and testing of your 
+software which communicates with serial port devices. You may not have any 
+serial port devices or serial port on your computer at the time of software 
+development and it is very essential if you can create a virtual serial port 
+and feed mock data to it and test your software.
+We’re going to use <code class="highlighter-rouge">socat</code> application to create a virtual serial port.</p>
+
+<h2 id="what-is-socat">What is <code class="highlighter-rouge">socat</code></h2>
+
+<p>Based on it’s documentation, Socat is a command line based utility that 
+establishes two bidirectional byte streams and transfers data between them.
+Because the streams can be constructed from a large set of different types of 
+data sinks and sources (see address types), and because lots of address options 
+may be applied to the streams, socat can be used for many different purposes.
+I don’t wanna bore you with all the details, we’re going to create a virtual 
+serial port and feed data to it like this:</p>
+
+<p><img src="/assets/images/image8.png" alt="VirtualSerialPort" title="VirtualSerialPort" /></p>
+
+<p>As you see in this figure, the virtual serial port has two connectors. 
+Our software can connect to one of them. And also we can implement another 
+test application which can connect to the second connector. Virtual serial port 
+transfers data between these two connectors, so the test application can feed 
+mock data and also reads data. In this way we can test our software.</p>
+
+<h2 id="create-virtual-serial-port">Create Virtual Serial Port</h2>
+
+<p>First of all install socat through running following command in the terminal:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>socat 
+</code></pre></div></div>
+
+<p>In the previous section we’ve said virtual serial port has two connectors, this
+two connectors must bind to two files. So create two files as follows:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch </span>interface_1
+<span class="nb">touch </span>interface_2
+</code></pre></div></div>
+
+<p>and finally we can create virtual serial port by running the following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>socat pty,link<span class="o">=</span>interface_1,raw,echo<span class="o">=</span>0 pty,link<span class="o">=</span>interface_2,raw,echo<span class="o">=</span>0
+</code></pre></div></div>
+
+<p>These two files behave like serial file port file descriptors for example: 
+<code class="highlighter-rouge">/dev/ttyUSB0</code></p>
+
+<p>And you can test virtual serial ports as follows.
+Open two terminals and run following commands:</p>
+
+<p>first terminal:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>interface_1
+</code></pre></div></div>
+
+<p>second terminal:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"this is test data"</span> <span class="o">&gt;&gt;</span> interface_2
+</code></pre></div></div>
+
+<p>And you see the text which you’ve written in the interface_1 appears in the 
+first terminal. 
+Congratulations you did it:) 
+Now your software can get the interface_1 file as a serial port file descriptor 
+and you can feed data to the virtual serial port through writing data to 
+interface_2 and also you can read the responses from interface_2.</p>
+
+  </div></div>
+
+      </section>
+    </main></body>
+</html>
