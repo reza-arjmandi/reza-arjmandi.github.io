@@ -1,96 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css">
-<title>Reza Arjmandi</title>
-<!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Reza Arjmandi | Hi, I’m Reza. I’m a C++ software engineer. I’m eager to share my experience with others. So I’ll try record new tutorial videos and write blog post about computer programming, Modern C++, Test-Driven-Development and so on. You can find my videos in my YouTube channel.</title>
-<meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Reza Arjmandi" />
-<meta name="author" content="reza-arjmandi" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Hi, I’m Reza. I’m a C++ software engineer. I’m eager to share my experience with others. So I’ll try record new tutorial videos and write blog post about computer programming, Modern C++, Test-Driven-Development and so on. You can find my videos in my YouTube channel." />
-<meta property="og:description" content="Hi, I’m Reza. I’m a C++ software engineer. I’m eager to share my experience with others. So I’ll try record new tutorial videos and write blog post about computer programming, Modern C++, Test-Driven-Development and so on. You can find my videos in my YouTube channel." />
-<meta property="og:site_name" content="Reza Arjmandi" />
-<script type="application/ld+json">
-{"@type":"WebSite","headline":"Reza Arjmandi","author":{"@type":"Person","name":"reza-arjmandi"},"description":"Hi, I’m Reza. I’m a C++ software engineer. I’m eager to share my experience with others. So I’ll try record new tutorial videos and write blog post about computer programming, Modern C++, Test-Driven-Development and so on. You can find my videos in my YouTube channel.","url":"/","name":"Reza Arjmandi","@context":"https://schema.org"}</script>
-<!-- End Jekyll SEO tag -->
-</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet/less" type="text/css" href="styles/main.less" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.4.3/js/jquery.terminal.js"></script>
+    <script type="text/javascript" src="src/shell.js"></script>
+    <script type="text/javascript" src="src/cli.js"></script>
+  </head>
+  
   <body>
-    <main class="container">
-      <section class="about">
-        <a href="/"><img src="/assets/portfolio.png" alt="Reza Arjmandi"></a>
-        <h2 id="title">
-          <a href="/">Reza Arjmandi</a>
-        </h2>
-        <p class="tagline">C++ Software Engineer.</p>
-        <ul class="social"><a href="https://github.com/reza-arjmandi">
-              <li>
-                <i class="icon-github-circled"></i>
-              </li>
-            </a><a href="https://www.linkedin.com/in/reza-arjmandi-1b5124a4">
-              <li>
-                <i class="icon-linkedin-squared"></i>
-              </li>
-            </a><a href="https://twitter.com/arjmandi-reza">
-              <li>
-                <i class="icon-twitter-squared"></i>
-              </li>
-            </a></ul><p>&copy;
-          2020</p>
-      </section>
-      <section class="content">
-        
-<ul class="posts">
-    <li>
-      <h1 id="posts-label">posts</h1>
-    </li><li><a class="post-link" href="/c++20/coroutines/2020/06/03/How_to_create_a_virtual_serial_port.html">
-          <h2 class="post-title">How to create a virtual serial port</h2>
-        </a>
-        <div class="post-meta">
-          <ul class="post-categories"><li>C++20</li><li>Coroutines</li></ul>
-          <div class="post-date">
-            <i class="icon-calendar"></i>
-            Jun 3, 2020</div>
-        </div>
-        <div class="post"><h2 id="table-of-content">Table of content</h2>
-</div>
-      </li><li><a class="post-link" href="/c++20/coroutines/2020/04/11/Front-end_With_React_Back-end_With_CPP.html">
-          <h2 class="post-title">Front-end With React.js, Back-end With C++!</h2>
-        </a>
-        <div class="post-meta">
-          <ul class="post-categories"><li>C++20</li><li>Coroutines</li></ul>
-          <div class="post-date">
-            <i class="icon-calendar"></i>
-            Apr 11, 2020</div>
-        </div>
-        <div class="post"><h2 id="table-of-content">Table of content</h2>
-</div>
-      </li><li><a class="post-link" href="/c++20/coroutines/2020/03/22/C++20_couroutines_implementing_async_generator.html">
-          <h2 class="post-title">C++20 Coroutines, Async Generator!</h2>
-        </a>
-        <div class="post-meta">
-          <ul class="post-categories"><li>C++20</li><li>Coroutines</li></ul>
-          <div class="post-date">
-            <i class="icon-calendar"></i>
-            Mar 22, 2020</div>
-        </div>
-        <div class="post"><p>Async generator is very similar to <code class="highlighter-rouge">generator</code> and can produce a sequence of
-values lazily, but ‍<code class="highlighter-rouge">async_generator</code> is different from <code class="highlighter-rouge">generator</code> in that
-values also can be produced asynchronously.
-In the <code class="highlighter-rouge">generator</code> coroutine body, we only can use <code class="highlighter-rouge">co_yield</code> operator, but in
-the <code class="highlighter-rouge">async_generator</code> coroutine body, we can use <code class="highlighter-rouge">co_yield</code> and <code class="highlighter-rouge">co_await</code>
-operators.
-Take a look at the following simple example.</p>
-</div>
-      </li></ul>
-
-  <!-- <p class="feed-subscribe"><svg class="svg-icon orange">
-		<use xlink:href="/assets/minima-social-icons.svg#rss"></use>
-	</svg><a href="/feed.xml">Subscribe</a></p> -->
-      </section>
-    </main></body>
-</html>
+  
+  <div class="terminal-window">
+    <header>
+      <div class="button red"></div>
+      <div class="button yellow"></div>
+      <div class="button green"></div>
+    </header>
+    <div id="terminal">
+      <p><span class="green">\[._.]/</span> - you're in cli! type `help` to get started.</p>
+        <p class="hidden">
+          <span class="prompt">
+            <span class="root">root</span>
+            <span class="tick">❯</span>
+          </span>
+          <span contenteditable="true" class="input" spellcheck="false"></span>
+        </p>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <p>© Reza Arjmandi 2023</p>
+    <p> Made with ❤ and coffee</p>
+  </div>
+  
+  </body>
