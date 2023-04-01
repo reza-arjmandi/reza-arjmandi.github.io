@@ -144,7 +144,6 @@ $(() => {
   pages.push($.get('pages/resume.html'));
   pages.push($.get('pages/root.html'));
   pages.push($.get('pages/skills.html'));
-  pages.push($.get('pages/talks.html'));
   $.when
     .apply($, pages)
     .done(
@@ -157,7 +156,6 @@ $(() => {
         resumeData,
         rootData,
         skillsData,
-        talksData,
       ) => {
         systemData['about'] = aboutData[0];
         systemData['contact'] = contactData[0];
@@ -167,7 +165,6 @@ $(() => {
         systemData['resume'] = resumeData[0];
         systemData['root'] = rootData[0];
         systemData['skills'] = skillsData[0];
-        systemData['talks'] = talksData[0];
       },
     );
 
