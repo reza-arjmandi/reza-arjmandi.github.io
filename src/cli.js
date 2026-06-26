@@ -6,7 +6,15 @@ const errors = {
   fileNotFound: 'Error: file not found in current directory',
   fileNotSpecified: 'Error: you did not specify a file',
   invalidFile: 'Error: not a valid file',
+  noSuchFileOrDirectory: 'Error: no such file or directory',
 };
+
+// Escape HTML so user-supplied text (e.g. command history) can't inject markup.
+const escapeHtml = (str) =>
+  String(str).replace(
+    /[&<>"']/g,
+    (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]),
+  );
 
 const struct = {
   root: ['about', 'resume', 'contact'],
@@ -45,7 +53,6 @@ commands.rm = () => errors.noWriteAccess;
 
 // View contents of specified directory.
 commands.ls = (directory) => {
-  console.log(systemData);
   if (directory === '..' || directory === '~') {
     return systemData['root'];
   }
@@ -70,7 +77,7 @@ commands.path = () => {
 commands.history = () => {
   let history = localStorage.history;
   history = history ? Object.values(JSON.parse(history)) : [];
-  return `<p>${history.join('<br>')}</p>`;
+  return `<p>${history.map(escapeHtml).join('<br>')}</p>`;
 };
 
 // Move into specified directory.
@@ -134,6 +141,10 @@ $(() => {
   registerMinimizedToggle();
   const cmd = document.getElementById('terminal');
 
+  // Keep the copyright year current.
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
   $.ajaxSetup({ cache: false });
   const pages = [];
   pages.push($.get('pages/about.html'));
@@ -166,7 +177,10 @@ $(() => {
         systemData['root'] = rootData[0];
         systemData['skills'] = skillsData[0];
       },
-    );
-
-  const terminal = new Shell(cmd, commands);
+    )
+    // Only start the shell once the virtual filesystem is loaded, so early
+    // input can't hit empty data. `always` keeps it usable even if a fetch fails.
+    .always(() => {
+      new Shell(cmd, commands);
+    });
 });

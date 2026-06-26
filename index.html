@@ -1,37 +1,77 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet/less" type="text/css" href="styles/main.less" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/1.4.3/js/jquery.terminal.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reza Arjmandi — Software Engineer</title>
+    <meta
+      name="description"
+      content="Reza Arjmandi — software engineer. An interactive terminal-style portfolio: type `help` to explore my skills, resume, and contact info."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='90'%3E🖥️%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Open Graph / social sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Reza Arjmandi — Software Engineer" />
+    <meta
+      property="og:description"
+      content="An interactive terminal-style portfolio. Type `help` to explore my skills, resume, and contact info."
+    />
+    <meta property="og:url" content="https://reza-arjmandi.github.io/" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs"
+      crossorigin="anonymous"
+    ></script>
     <script type="text/javascript" src="src/shell.js"></script>
     <script type="text/javascript" src="src/cli.js"></script>
   </head>
-  
+
   <body>
-  
-  <div class="terminal-window">
-    <header>
-      <div class="button red"></div>
-      <div class="button yellow"></div>
-      <div class="button green"></div>
-    </header>
-    <div id="terminal">
-      <p><span class="green">\[._.]/</span> - you're in cli! type `help` to get started.</p>
-        <p class="hidden">
+    <div class="terminal-window">
+      <header>
+        <div class="button red"></div>
+        <div class="button yellow"></div>
+        <div class="button green"></div>
+      </header>
+      <div id="terminal">
+        <p><span class="green">\[._.]/</span> - you're in cli! type `help` to get started.</p>
+        <p>
           <span class="prompt">
             <span class="root">root</span>
             <span class="tick">❯</span>
           </span>
           <span contenteditable="true" class="input" spellcheck="false"></span>
         </p>
+      </div>
     </div>
-  </div>
-  
-  <div class="footer">
-    <p>© Reza Arjmandi 2023</p>
-    <p> Made with ❤ and coffee</p>
-  </div>
-  
+
+    <!-- Fallback for crawlers and visitors without JavaScript, who can't run the CLI. -->
+    <noscript>
+      <div class="noscript">
+        <h1>Reza Arjmandi</h1>
+        <p>
+          I'm a software engineer — highly motivated, with an analytic mind and a passion for
+          learning and solving problems.
+        </p>
+        <ul>
+          <li><a href="https://github.com/reza-arjmandi">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/reza-arjmandi-asl/">LinkedIn</a></li>
+          <li><a href="mailto:arjmandi.re@gmail.com">Email</a></li>
+          <li><a href="data/resume.pdf">Resume (PDF)</a></li>
+        </ul>
+      </div>
+    </noscript>
+
+    <div class="footer">
+      <p>© Reza Arjmandi <span id="year">2026</span></p>
+      <p>Made with ❤ and coffee</p>
+    </div>
   </body>
+</html>
